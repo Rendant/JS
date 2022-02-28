@@ -12,6 +12,11 @@ function load_all() {
 		let td1 = document.createElement('td')
 		let td2 = document.createElement('td')
 		let td3 = document.createElement('td')
+		let btn = document.createElement('button')
+		btn.textContent = 'подробнее'
+		$(btn).on('click', function() {
+			show_info(i)
+		})
 
 		td1.textContent = id
 		td2.textContent = name
@@ -20,9 +25,22 @@ function load_all() {
 		tr.appendChild(td1)
 		tr.appendChild(td2)
 		tr.appendChild(td3)
+		tr.appendChild(btn)
 
 		table.appendChild(tr)
-	}
+	} 
+}
+
+function show_info(id) {
+	let div = document.getElementById('info')
+
+	let h1 = document.createElement('h1')
+	h1.textContent = 'Информация о студенте №' + students[id].id
+
+	div.innerHTML = ''
+
+	div.appendChild(h1)
+
 }
 
 function load_from_site() {
@@ -32,47 +50,43 @@ function load_from_site() {
 }
 
 function load_student(id) {
-	let head = document.getElementById('zagolovok')
-	head.textContent = 'Информация о студенте №' + students[id].id
-	let name_info = document.getElementById('name')
-	name_info.textContent = students[id].name
-	let surname_info = document.getElementById('surname')
-	surname_info.textContent = students[id].surname
+	$('#zagolovok').text('Информация о студенте №' + students[id].id)
+	$('#name').text(students[id].name)
+	$('#surname').text(students[id].surname)
 
 	if (id == students.length - 1) {
-		let button_next = document.getElementById("button_next").disabled = true;
+		$('#button_next').attr({'disabled':true})
 	}
 	else {
-		let button_next = document.getElementById("button_next").disabled = false;
+		$('#button_next').attr({'disabled':false})	
 	}
 	if (id == 0) {
-		let button_previous = document.getElementById("button_previous").disabled = true;
+		$('#button_previous').attr({'disabled':true})
 	}
 	else {
-		let button_previous = document.getElementById("button_previous").disabled = false;
+		$('#button_previous').attr({'disabled':false})	
 	}
 
-	let logo = document.getElementById('logo').src = 'http://217.71.129.139:4035/' + students[id].logo
-	let mark1 = document.getElementById('mark1')
-	mark1.textContent = students[id].scores[0]
-	let mark2 = document.getElementById('mark2')
-	mark2.textContent = students[id].scores[1]
-	let mark3 = document.getElementById('mark3')
-	mark3.textContent = students[id].scores[2]
-	let mark4 = document.getElementById('mark4')
-	mark4.textContent = students[id].scores[3]
-	let mark5 = document.getElementById('mark5')
-	mark5.textContent = students[id].scores[4]
-	let average = document.getElementById('aver')
-	average.textContent = (Number(mark1.textContent) + Number(mark2.textContent) + Number(mark3.textContent) + Number(mark4.textContent) + Number(mark5.textContent)) / 5
+	$('#logo').attr({'src':'http://217.71.129.139:4035/' + students[id].logo})
+	$('#mark1').text(students[id].scores[0])
+	$('#mark2').text(students[id].scores[1])
+	$('#mark3').text(students[id].scores[2])
+	$('#mark4').text(students[id].scores[3])
+	$('#mark5').text(students[id].scores[4])
+	$('#aver').text((Number(mark1.textContent) + Number(mark2.textContent) + Number(mark3.textContent) + Number(mark4.textContent) + Number(mark5.textContent)) / 5)
 }
+
 function next_student() {
 	id_info += 1
-	console.log(id_info)
 	load_student(id_info)
 }
+
 function previous_student() {
 	id_info -= 1
-	console.log(id_info)
 	load_student(id_info)
+}
+
+function all_upd() {
+		load_all()
+		$('#btn_all_upd').css({'display':'none'})
 }
