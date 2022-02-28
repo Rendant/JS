@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<scripts src="js\jquery-3.6.0.js"></scripts>
+	<script src='js\scripts.js'></script>
+	<link rel='stylesheet' href='style.css'>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display&display=swap" rel="stylesheet"> 
+	<title>Подробная информация</title>
+</head>
+<body onload='load_from_site();load_student(id_info);load_info()'>
+	<div ><h1 id="zagolovok"></h1>
+	<span class="title">Имя: </span><span id="name" class="val"></span><br>
+	<span class="title">Фамилия: </span><span id="surname" class="val"></span><br>
+	<table id='tbl_info'>
+		<tr>
+			<th>Лого</th>
+			<th>Математика</th>
+			<th>Русский язык</th>
+			<th>Информатика</th>
+			<th>Биология</th>
+			<th>Физ-культура</th>
+			<th>ср. знач</th>
+		</tr>
+		<tr id='marks'>
+			<th><img src='' alt="" id="logo"></th>
+			<th id='mark1'></th>
+			<th id='mark2'></th>
+			<th id='mark3'></th>
+			<th id='mark4'></th>
+			<th id='mark5'></th>
+			<th id='aver'></th>
+		</tr>
+	</table>
+	<button onclick="previous_student()" id='button_previous'>Предыдущий</button>
+	<button onclick="next_student()" id='button_next'>Следующий</button>
+</body>
+</body>
+</html>
