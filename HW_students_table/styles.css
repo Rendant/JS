@@ -1,0 +1,10 @@
+* {
+	box-sizing: border-box;
+}
+#container {
+	height: 1000px;
+	justify-content: center;
+}
+button#load {
+	margin: 500px 50%;
+}
